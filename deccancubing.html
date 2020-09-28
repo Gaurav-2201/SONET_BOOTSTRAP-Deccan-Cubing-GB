@@ -1,13 +1,26 @@
-
 <!DOCTYPE html>
 <html>
     <head>
         <title>Deccan Cubing</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script>
+    function myFunction(imgs) {
+      var expandImg = document.getElementById("expandedImg");
+      var imgText = document.getElementById("imgtext");
+      expandImg.src = imgs.src;
+      imgText.innerHTML = imgs.alt;
+      expandImg.parentElement.style.display = "block";
+    }
+    </script>
+    
         <!-- <link rel="stylesheet" href=
 "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 crossorigin="anonymous">
@@ -28,33 +41,36 @@ crossorigin="anonymous"></script>
          -->
     </head>
     <style>
-
         .body{
             text-align: center;
             font-size: 10vw;
+            background-color: indianred;
         }
          .navbar {
             top: 0;
             position: relative;
             overflow: hidden;
-            background-color:whitesmoke;
-            color: orange;
+            background-color:transparent;
+            color: black;
             text-align: center;
+            border: none;
+            border-bottom: none;
             
         }
+        
         .navbar a{
             float: left;
             display: block;
             text-align: center;
-            color: orange;
+            color: black;
         } 
         .navbar a:hover {
-            background-color: lightblue;
-            color: black;
+            background-color: gold;
+            color: orange;
         }
-        .navbar a.active{
-            background-color: black;
-            color: blue;
+        .navbar a:active{
+            background-color: yellow;
+            color: black;
         }
          .img{
             width: fit-content;
@@ -80,23 +96,27 @@ crossorigin="anonymous"></script>
         }
         
         .comps{
-            font-size: 2vw;
+            font-size: 1.8vw;
         }
         .context{
             font-style: oblique;
-            color: black;
+            color: beige;
             font-family: sans-serif;
+            font-weight: bolder;
         }
         marquee{
             width: 100%;
             font-family: 'Times New Roman', Times, serif;
             font-size: 50px;
-            background-color: silver;
+            background-color: transparent
         }
         nav ul{
             padding: 0;
             width: 100%;
-            font-size: 20px;
+            font-size: 12px;
+        }
+        #heads{
+            color:whitesmoke ;
         }
         nav ul li{
             display: inline;
@@ -104,7 +124,7 @@ crossorigin="anonymous"></script>
         }
         .li a{
             display: block;
-            padding: 30px;
+            padding: 20px;
         }
         .values{
             vertical-align: middle;
@@ -112,18 +132,29 @@ crossorigin="anonymous"></script>
             text-align: center;
         }
         #CORE_data{
-            color: chocolate;
+            color:darkmagenta;
             font-family: monospace;
+            font-weight: 900;
         }
         ul.comps{
             font-family: sans-serif;
+            list-style-type: none;
+        }
+        li.comp{
             list-style-type: none;
         }
         #JOINUS{
             font-family: Verdana, Geneva, Tahoma, sans-serif;
             padding: 10px;
             font-size: 2vw;
-
+        }
+        h1.headp{
+            font-weight: bold;
+            font-size: 40px;
+        }
+        h1.headsp{
+            font-weight: bold;
+            font-size: 60px;
         }
         .form{
             padding: 5px;
@@ -150,36 +181,130 @@ crossorigin="anonymous"></script>
             text-align: right;
             float: right;
         }
+        table.center{
+            padding: 5px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 40vw;
+            background-color: black;
+        }
+        table,th, td{
+            text-align: center;
+            padding: 5px;
+            border: orange solid 1px;
+            color: gold;
+        }
+        table.complist{
+            border-collapse: collapse;
+            text-align: center;
+            padding: 5px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 60vw;
+            border: none;
+            background-color: black;
+        }
+        table.complist,td{
+            padding: 7px;
+        }
+        a.link{
+            color:orange ;
+            font-weight: bolder;
+        }
+        .foot{
+            background-color: yellow;
+        }
+        /* The grid: Four equal columns that floats next to each other */
+        .column {
+        float: left;
+        width: 25%;
+        padding: 10px;
+        }
 
+        /* Style the images inside the grid */
+        .column img {
+        opacity: 0.8; 
+        cursor: pointer; 
+        }
+
+        .column img:hover {
+        opacity: 1;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+        content: "";
+        display: table;
+        clear: both;
+        }
+
+        /* The expanding image container */
+        .container {
+        position: relative;
+        display: none;
+        }
+
+        /* Expanding image text */
+        #imgtext {
+        position: absolute;
+        bottom: 15px;
+        left: 15px;
+        color: white;
+        font-size: 20px;
+        }
+        /* Closable button inside the expanded image */
+        .closebtn {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        color: white;
+        font-size: 35px;
+        cursor: pointer;
+        }
+        a.WCA{
+            color: black;
+            font-size: 24px;
+        }
         
     </style>
     <body>
-        <div class="jumbotron text-centre" style="margin-bottom: 0px; text-align: center;">
-            <h1 style="font-size: 100px;">DECCAN CUBING</h1>
-            <h4>A non profit organization</h4>
+        <div class="jumbotron text-centre" style="margin-bottom: 0px; text-align: center; background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQrALCeIejMG27eP7wFgQJzcYYKcNYR13mLvA&usqp=CAU); background-size: cover;" >
+            <h1 style="font-size: 60px;">DECCAN CUBING</h1>
+            <h4>A Non Profit Organization</h4>
         <marquee>Welcome to the Home Page of <b>Deccan Cubing Organization!!!</b></marquee> 
-        <nav class="navbar navbar-default">
+        <nav class="navbar navbar-expand-md bg-warning navbar-light">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="container-fluid">
-                <ul class="nav nav-tabs">
-                    <li class="active">
-                        <a data-toggle="tab" href="#HOME">HOME </a>
-                    </li>
-                    <li>
-                        <a data-toggle="tab" href="#CUBING">WHAT IS CUBING? </a>
-                    </li>
-                    <li>
-                        <a data-toggle="tab" href="#ABOUT">ABOUT US </a>
-                    </li>
-                    <li>
-                        <a data-toggle="tab" href="#COMPS">LIST OF OUR COMPETITIONS! </a>
-                    </li>
-                    <li>
-                        <a data-toggle="tab" href="#CORE">OUR CORE TEAM </a>
-                    </li>
-                    <li>
-                        <a data-toggle="tab" href="#JOINUS">JOIN US!!</a>
-                    </li>
-                </ul>
+                <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item active">
+                            <a class="nav-link" data-toggle="tab" href="#HOME"><span class="glyphicon glyphicon-home "></span> HOME </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#CUBING"><span class="glyphicon glyphicon-th"></span> WHAT IS CUBING? </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#ABOUT"><span class="glyphicon glyphicon-th-large"></span> ABOUT US </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#COMPS"><span class="glyphicon glyphicon-calendar"></span> LIST OF COMPETITIONS! </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#CORE"><span class="glyphicon glyphicon-user"></span> OUR CORE TEAM </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#SR"><span class="glyphicon glyphicon-time"></span> STATE RECORDS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#GALLERY"><span class="glyphicon glyphicon-picture"></span> GALLERY</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#JOINUS"><span class="glyphicon glyphicon-pencil"></span> JOIN US!!</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </nav>
         <div class="tab-content">
@@ -188,9 +313,9 @@ crossorigin="anonymous"></script>
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-sm-12">
-                                <h1>HOME</h1>
-                                <img src="https://scontent.fhyd2-1.fna.fbcdn.net/v/t31.0-8/17505225_1289679464443257_4202277688120495049_o.jpg?_nc_cat=110&_nc_sid=09cbfe&_nc_ohc=gpyML-IZhDoAX_b-fDm&_nc_ht=scontent.fhyd2-1.fna&oh=b291e217f41b023f5371b2ac3ce4f0be&oe=5F9124A4" style="max-width: 100%; height: 300px;">
-                                <p class="context">Hello! Welcome to Deccan Cubing's Page! You might be wondering what exactly is Deccan Cubing? 
+                                <h1 class="headsp">HOME</h1><br>
+                                <img src="https://scontent.fhyd2-1.fna.fbcdn.net/v/t31.0-8/17505225_1289679464443257_4202277688120495049_o.jpg?_nc_cat=110&_nc_sid=09cbfe&_nc_ohc=gpyML-IZhDoAX_b-fDm&_nc_ht=scontent.fhyd2-1.fna&oh=b291e217f41b023f5371b2ac3ce4f0be&oe=5F9124A4" style="max-width: 100%; height: 300px;"><br>
+                                <p class="context"><br>Hello! Welcome to Deccan Cubing's Page! You might be wondering what exactly is Deccan Cubing? 
                                 Deccan Cubing is a community which strives in devoloping speedcubing in Hyderabad and South India. All details of official and unofficial competitions organized by our team would be shared here!
                                 With the support of our team members and all the awesome cubers across India, we hope that we will make speedcubing more popular and competitive!
                                 </p>
@@ -202,7 +327,7 @@ crossorigin="anonymous"></script>
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm-12">
-                            <h1 id="CUBING">WHAT IS SPEEDCUBING?</h1>
+                            <h1 class="headp" id="CUBING">WHAT IS SPEEDCUBING?</h1>
                             <div id="myCarousel" class="carousel slide" data-ride="carousel">
                                 <!-- Indicators -->
                                 <ol class="carousel-indicators">
@@ -214,15 +339,15 @@ crossorigin="anonymous"></script>
                                 <!-- Wrapper for slides -->
                                 <div class="carousel-inner">
                                 <div class="item active">
-                                    <img src="https://i.ytimg.com/vi/gl_sISUEkRo/maxresdefault.jpg" style="max-width: 100%; height: 400px;" >
+                                    <img src="https://i.ytimg.com/vi/gl_sISUEkRo/maxresdefault.jpg" style="max-width: 100vw; height: 40vw;" >
                                 </div>
                             
                                 <div class="item">
-                                    <img src="https://scontent.fhyd2-1.fna.fbcdn.net/v/t1.0-9/40684884_1824236010987597_8841855190077276160_o.jpg?_nc_cat=109&_nc_sid=cdbe9c&_nc_ohc=6c9ZGz09PK8AX89ed5W&_nc_ht=scontent.fhyd2-1.fna&oh=7e0890ff1991bcbe70a87e66f3a8d60e&oe=5F92AA16" style="max-width: 100%; height: 400px;">
+                                    <img src="https://scontent.fhyd2-1.fna.fbcdn.net/v/t1.0-9/40684884_1824236010987597_8841855190077276160_o.jpg?_nc_cat=109&_nc_sid=cdbe9c&_nc_ohc=6c9ZGz09PK8AX89ed5W&_nc_ht=scontent.fhyd2-1.fna&oh=7e0890ff1991bcbe70a87e66f3a8d60e&oe=5F92AA16" style="max-width: 100vw; height: 40vw;">
                                 </div>
                                 
                                 <div class="item">
-                                    <img src="https://scontent.fhyd2-1.fna.fbcdn.net/v/t1.0-9/40653124_1824232017654663_7118408844258050048_o.jpg?_nc_cat=102&_nc_sid=cdbe9c&_nc_ohc=uQPceuiAp7gAX8V_JjR&_nc_ht=scontent.fhyd2-1.fna&oh=d0b0b39128fed0f6df8dfe4805ec10ba&oe=5F91BAD1" style="max-width: 100%; height: 400px;">
+                                    <img src="https://scontent.fhyd2-1.fna.fbcdn.net/v/t1.0-9/40653124_1824232017654663_7118408844258050048_o.jpg?_nc_cat=102&_nc_sid=cdbe9c&_nc_ohc=uQPceuiAp7gAX8V_JjR&_nc_ht=scontent.fhyd2-1.fna&oh=d0b0b39128fed0f6df8dfe4805ec10ba&oe=5F91BAD1" style="max-width: 100vw; height: 40vw;">
                                 </div></div>
                                 <a class="left carousel-control" href="#myCarousel" data-slide="prev">
                                     <span class="glyphicon glyphicon-chevron-left"></span>
@@ -244,7 +369,7 @@ crossorigin="anonymous"></script>
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm-12">
-                            <h1 id="ABOUT">ABOUT US</h1>
+                            <h1 class="headp" id="ABOUT">ABOUT US</h1>
                             <div id="myCarouse2" class="carousel slide" data-ride="carousel">
                                 <!-- Indicators -->
                                 <ol class="carousel-indicators">
@@ -256,15 +381,15 @@ crossorigin="anonymous"></script>
                                 <!-- Wrapper for slides -->
                                 <div class="carousel-inner">
                                 <div class="item active">
-                                    <img src="https://scontent.fhyd2-1.fna.fbcdn.net/v/t1.0-9/71924257_2412864065458119_2464218291871154176_o.jpg?_nc_cat=111&_nc_sid=cdbe9c&_nc_ohc=Ij6_qWrwkTYAX9WvOI-&_nc_ht=scontent.fhyd2-1.fna&oh=8b442596ba8b5e19434ce0654cd1ab5f&oe=5F927E08" style="max-width: 1000px; height: 500px;">
+                                    <img src="https://scontent.fhyd2-1.fna.fbcdn.net/v/t1.0-9/71924257_2412864065458119_2464218291871154176_o.jpg?_nc_cat=111&_nc_sid=cdbe9c&_nc_ohc=Ij6_qWrwkTYAX9WvOI-&_nc_ht=scontent.fhyd2-1.fna&oh=8b442596ba8b5e19434ce0654cd1ab5f&oe=5F927E08" style="max-width: 100vw; height: 50vw;">
                                 </div>
                             
                                 <div class="item">
-                                    <img src="https://scontent.fhyd2-1.fna.fbcdn.net/v/t1.0-9/74371487_978654249138607_4389359222488301568_o.jpg?_nc_cat=101&_nc_sid=84a396&_nc_ohc=ZJ4WjMjqOJMAX_ezVeE&_nc_ht=scontent.fhyd2-1.fna&oh=9abed7fd897f2099fb32e9a965d6db64&oe=5F93BAD8" style="max-width: 1080px; height: 500px;">
+                                    <img src="https://scontent.fhyd2-1.fna.fbcdn.net/v/t1.0-9/74371487_978654249138607_4389359222488301568_o.jpg?_nc_cat=101&_nc_sid=84a396&_nc_ohc=ZJ4WjMjqOJMAX_ezVeE&_nc_ht=scontent.fhyd2-1.fna&oh=9abed7fd897f2099fb32e9a965d6db64&oe=5F93BAD8" style="max-width: 100vw; height: 50vw;">
                                 </div>
                                 
                                 <div class="item">
-                                    <img src="https://scontent.fhyd2-1.fna.fbcdn.net/v/t1.0-9/36856033_1738400596237806_7991438711847911424_o.jpg?_nc_cat=106&_nc_sid=8bfeb9&_nc_ohc=sLw72bEiEIIAX8j5SZd&_nc_ht=scontent.fhyd2-1.fna&oh=d22c1d21c08f28ad016e6daa413ace3a&oe=5F932C18" style="max-width: 100%; height: 500px;">
+                                    <img src="https://scontent.fhyd2-1.fna.fbcdn.net/v/t1.0-9/36856033_1738400596237806_7991438711847911424_o.jpg?_nc_cat=106&_nc_sid=8bfeb9&_nc_ohc=sLw72bEiEIIAX8j5SZd&_nc_ht=scontent.fhyd2-1.fna&oh=d22c1d21c08f28ad016e6daa413ace3a&oe=5F932C18" style="max-width: 100vw; height: 50vw;">
                                 </div></div>
                                 <a class="left carousel-control" href="#myCarouse2" data-slide="prev">
                                     <span class="glyphicon glyphicon-chevron-left"></span>
@@ -276,15 +401,93 @@ crossorigin="anonymous"></script>
                                 </a>
                                 </div>
 
-                            <p class="context">Deccan Cubing was found in 2017 by the delegate of Hyderabad, Akula Pavan Kumar along with his friend Murali Krishna! The first official cubing competition by Deccan Cubing team was organized in August 2017! Since then Deccan Cubing has organized 12 official WCA Competitions! </p>
+                            <p class="context"><br>Deccan Cubing was found in 2017 by the delegate of Hyderabad, Akula Pavan Kumar along with his friend Murali Krishna! The first official cubing competition by Deccan Cubing team was organized in August 2017! Since then Deccan Cubing has organized 12 official WCA Competitions! </p>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="tab-pane fade" id="COMPS">
                 <div class="container-fluid">
-                    <h1>List of Competitions Organized!</h1>
+                    <h1 class="headp">List of Competitions Organized!</h1>
                     <div class="row">
+                        <div class="col-sm-12">
+                            <table class=complist style="border: none;">
+                                <ul class="comps" style="list-style-type: none;">
+                                    <tr>
+                                        <td>
+                                            <l1 class="comp">
+                                                <a class="link" href="https://www.worldcubeassociation.org/competitions/DeccancubeOpenAugust2017" target="_blank">Deccan Cube Open - August 2017</a>
+                                            </l1>
+                                        </td>
+                                        <td>
+                                            <li class="comp">
+                                                <a class="link" href="https://www.worldcubeassociation.org/competitions/HyderabadCubeOpen2018"target="_blank">Hyderabad Cube Open - 2018</a>
+                                            </li>
+                                        </td>
+                                        <td>
+                                            <li class="comp">
+                                                <a class="link" href="https://www.worldcubeassociation.org/competitions/KKCharityCubeOpen2018"target="_blank">KK Charity Cube Open - 2018</a>
+                                            </li>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <li class="comp">
+                                                <a class="link" href="https://www.worldcubeassociation.org/competitions/DeccanCubeOpenSeptember2017 "target="_blank">Deccan Cube Open - September 2017</a>
+                                            </li>
+                                        </td>
+                                        <td>
+                                            <li class="comp">
+                                                <a class="link" href="https://www.worldcubeassociation.org/competitions/VarshaRituCubeOpen2018"target="_blank">Varsha Ritu Cube Open - 2018</a>
+                                            </li>
+                                        </td>
+                                        <td>
+                                            <li class="comp">
+                                                <a class="link" href="https://www.worldcubeassociation.org/competitions/GeethanjaliCubeOpen2019"target="_blank">Geethanjali Cube Open - 2019</a>
+                                            </li>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <li class="comp">
+                                                <a class="link" href="https://www.worldcubeassociation.org/competitions/CubingATMOSphere2017"target="_blank">Cubing Atmosphere - 2017</a>
+                                            </li>
+                                        </td>
+                                        <td>
+                                            <li class="comp">
+                                                <a class="link" href="https://www.worldcubeassociation.org/competitions/GeethanjaliMonsoonOpen2018"target="_blank">Geethanjali Monsoon Open - 2018</a>
+                                            </li>
+                                        </td>
+                                        <td>
+                                            <li class="comp">
+                                                <a class="link" href="https://www.worldcubeassociation.org/competitions/HyderabadCubeOpen2019"target="_blank">Hyderabad Cube Open - 2019</a>
+                                            </li>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <li class="comp">
+                                                <a class="link" href="https://www.worldcubeassociation.org/competitions/GeethanjalicOpen2018"target="_blank">Geethanjali Cube Open - 2018</a>
+                                            </li>
+                                        </td>
+                                        <td>
+                                            <li class="comp">
+                                                <a class="link" href="https://www.worldcubeassociation.org/competitions/CubingATMOSphere2018"target="_blank">Cubing Atmosphere - 2018</a>
+                                            </li>
+                                        </td>
+                                        <td>
+                                            <li class="comp">
+                                                <a class="link" href="https://www.worldcubeassociation.org/competitions/CubingATMOSphere2019"target="_blank">Cubing Atmosphere - 2019</a>
+                                            </li>
+                                        </td>
+                                    </tr>
+                                </ul>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                    <!-- <div class="row">
                         <div class="col-sm-4">
                         <ul class="comps">
                             <li class="comp">
@@ -334,29 +537,32 @@ crossorigin="anonymous"></script>
                         </li>
                     </ul>
                 </div>
-                </ul>
-            </div></div></div>
+                </ul> -->
+            <!-- </div></div></div> -->
             <div id="CORE" class="tab-pane fade">
                 <div id="container-fluid">
-                    <h1 style="font: bolder; font-size: 70px;">CORE TEAM</h1>
+                    <h1 class="headp">CORE TEAM</h1>
                     <h2 id="heads">CO-FOUNDERS</h2>
                     <div class="row">
                         <div class="col-sm-4">
                             <img src="https://scontent.fhyd2-1.fna.fbcdn.net/v/t1.0-9/96239741_3190357670977003_8922135271370129408_o.jpg?_nc_cat=103&_nc_sid=09cbfe&_nc_ohc=efa8Ij8-6pYAX8hP3Oi&_nc_ht=scontent.fhyd2-1.fna&oh=c5023519395b0fb1285ec4c9b05e94c7&oe=5F925C22" style="height: 300px; max-width:100%;">
                             <h2 id="CORE_data" style="font-size: 28px;">AKULA PAVAN KUMAR</h2>
-                            <p class="context">Pavan is one of the co-founders of Deccan Cubing Organization and also is one of the seven delegates of India! He has been in this cubing community for over 10 years now and always makes sure that all rules are abided during the competition. He guides the other team members to make sure there is no confusion and the competition is organized smoothly!</p>
+                            <a class="WCA" href="https://www.worldcubeassociation.org/persons/2011KUMA01">WCA ID<span class="glyphicon glyphicon-link"></span></a>
+                            <p class="context"><br>Pavan is one of the co-founders of Deccan Cubing Organization and also is one of the seven delegates of India! He has been in this cubing community for over 10 years now and always makes sure that all rules are abided during the competition. He guides the other team members to make sure there is no confusion and the competition is organized smoothly!</p>
 
                         </div>
                         <div class="col-sm-4">
                             <img src="https://scontent.fhyd2-1.fna.fbcdn.net/v/t1.0-9/1981956_1013962015291930_3848042835836521925_n.jpg?_nc_cat=100&_nc_sid=09cbfe&_nc_ohc=Rj3DOzRSwaEAX9yXvzV&_nc_oc=AQne-dDKp2tF64jb19QqWV6srS-5BgWEe8A99jxeCIPvAbHCOZhxz79Qg-0MN1h9Ewo&_nc_ht=scontent.fhyd2-1.fna&oh=56444ab4a7ad63cae69766fafae46651&oe=5F91C4E7" style="height: 300px; max-width: 100%">
                             <h2 id="CORE_data"> MURALI KRISHNA</h2>
-                            <p class="context">Murali is the 2nd co-founder of this organization. He has been attending official competitions since 2012! He usually is the one who finalizes the venues for our competitions and clears queries of participants and parents at the competition. He also takes care of the registrations which are done before the competition!</p>
+                            <a class="WCA" href="https://www.worldcubeassociation.org/persons/2012KRIS04">WCA ID<span class="glyphicon glyphicon-link"></span></a>
+                            <p class="context"><br>Murali is the 2nd co-founder of this organization. He has been attending official competitions since 2012! He usually is the one who finalizes the venues for our competitions and clears queries of participants and parents at the competition. He also takes care of the registrations which are done before the competition!</p>
                         
                         </div>
                         <div class="col-sm-4">
                             <img src="https://scontent.fhyd2-1.fna.fbcdn.net/v/t1.0-9/34342293_2236138016404086_2518228699619262464_n.jpg?_nc_cat=104&_nc_sid=09cbfe&_nc_ohc=aHl3pF1JJEoAX_--CFF&_nc_ht=scontent.fhyd2-1.fna&oh=44b5d9ea6297935a773aec3f79d1e318&oe=5F932EAC" style="height: 300px; max-width: 100%;">
                             <h2 id="CORE_data">AKULA SAI KUMAR</h2>
-                            <p class="context">Akula Sai Kumar, the younger brother of Pavan is equally important to the team as he is the one who takes care of all the scorecards, venue setups, banners and many more things! He also manages the registration along with Murali on the day of the competition and is really active in whatever he does!</p>
+                            <a class="WCA" href="https://www.worldcubeassociation.org/persons/2012KUMA02">WCA ID<span class="glyphicon glyphicon-link"></span></a>
+                            <p class="context"><br>Akula Sai Kumar, the younger brother of Pavan is equally important to the team as he is the one who takes care of all the scorecards, venue setups, banners and many more things! He also manages the registration along with Murali on the day of the competition and is really active in whatever he does!</p>
                         </div>
                     </div>
                     <div id="CORE" class="data">
@@ -365,7 +571,8 @@ crossorigin="anonymous"></script>
                         <div class="col-sm-12">
                         <img src="https://scontent.fhyd2-1.fna.fbcdn.net/v/t1.0-9/70986106_2412852858792573_4880687581181771776_o.jpg?_nc_cat=102&_nc_sid=cdbe9c&_nc_ohc=_vkcZ3xh97sAX_bjJ1f&_nc_ht=scontent.fhyd2-1.fna&oh=df2a416a5d36348b0254657b40db58d3&oe=5F912057" style="height: 400px; max-width: 100%;">
                         <h2 id="CORE_data">ABHISHEK SATHYANARAYANAN</h2>
-                        <p class="context"> Abhishek is the scrambling head of the head! He makes sure that every competitior's cube is scrambled in the correct way and there are no errors! He also plays a major role in advising the co-founders and volunteering members whenever required!</p>
+                        <a class="WCA" href="https://www.worldcubeassociation.org/persons/2012SATH01">WCA ID<span class="glyphicon glyphicon-link"></span></a>
+                        <p class="context"> <br>Abhishek is the scrambling head of the head! He makes sure that every competitior's cube is scrambled in the correct way and there are no errors! He also plays a major role in advising the co-founders and volunteering members whenever required!</p>
                         </div>
                     </div>
                     <div class="data" id="CORE">
@@ -374,26 +581,278 @@ crossorigin="anonymous"></script>
                             <div class="col-sm-6">
                                 <img src="https://scontent.fhyd2-1.fna.fbcdn.net/v/t1.0-9/71005524_2412850662126126_7893452889870303232_o.jpg?_nc_cat=103&_nc_sid=cdbe9c&_nc_ohc=Um_O_KbHfy0AX8avkEK&_nc_ht=scontent.fhyd2-1.fna&oh=9320e0808a8d0b963e5fd6989b9e4853&oe=5F943E67" style="max-width: 100%; height: 300px;">
                                 <h2 id="CORE_data">GAURAV BACHANI</h2>
+                                <a class="WCA" href="https://www.worldcubeassociation.org/persons/2017BACH09">WCA ID<span class="glyphicon glyphicon-link"></span></a>
                             </div>
                             <div class="col-sm-6">
                                 <img src="https://scontent.fhyd2-1.fna.fbcdn.net/v/t31.0-8/13130882_234224023634467_7639022802208074082_o.jpg?_nc_cat=104&_nc_sid=174925&_nc_ohc=ea-CDaCP78oAX9bZs9O&_nc_ht=scontent.fhyd2-1.fna&oh=b160158c29b2f441091c2b5366317a0f&oe=5F9241CD" style="max-width: 100%; height: 300px;">
                                 <h2 id="CORE_data">KILAMBI SATVIK</h2>
+                                <a class="WCA" href="https://www.worldcubeassociation.org/persons/2015SATV01">WCA ID<span class="glyphicon glyphicon-link"></span></a>
                             </div>
                         </div>
-                        <p class="context">The volunteering heads take care of managing the volunteering team, collecting cubes from competitiors, assigning volunteers their roles, announcements at competitions, venue setups, interacting with competitors who have doubts/issues regarding anything and making sure there isn't any delay at the competition! </p>
+                        <p class="context"><br>The volunteering heads take care of managing the volunteering team, collecting cubes from competitiors, assigning volunteers their roles, announcements at competitions, venue setups, interacting with competitors who have doubts/issues regarding anything and making sure there isn't any delay at the competition! </p>
                     <div class="data" id="CORE">
                         <h2 id="heads">TECHNICAL HEAD</h2>
                         <div class="row">
                             <div class="col-sm-12">
                                 <img src="https://scontent.fhyd2-1.fna.fbcdn.net/v/t1.0-9/71249621_2412818918795967_1248056761085067264_o.jpg?_nc_cat=110&_nc_sid=cdbe9c&_nc_ohc=ThcShybAQkoAX88UgKO&_nc_ht=scontent.fhyd2-1.fna&oh=1084826865d696d7400ca7c3fff2dad7&oe=5F93C8A4" style="max-width: 100%; height: 400px;">
                                 <h2 id="CORE_data">ANIRUDH PULAVARTHY</h2>
-                                <p class="context">The newest member of our core team Anirudh, takes care of all the data entry of results at the competition making sure all the times are entered correctly in the database, communicates with sponsors of the event and takes care of all the emails which are to be sent to the competitiors before and after the competition!</p>
+                                <a class="WCA" href="https://www.worldcubeassociation.org/persons/2014PULA01">WCA ID<span class="glyphicon glyphicon-link"></span></a>
+                                <p class="context"><br>The newest member of our core team Anirudh, takes care of all the data entry of results at the competition making sure all the times are entered correctly in the database, communicates with sponsors of the event and takes care of all the emails which are to be sent to the competitiors before and after the competition!</p>
                             </div>
                     </div>
                 </div></div></div></div></div>
+                <div class="tab-pane fade" id="SR">
+                    <div class="container-fluid">
+                        <h3>Here's a list of <b>STATE RECORDS</b> of Hyderabad.<br> This list consists of all the people who have the fastest single and average in a particular event! </h3>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h2><b>SINGLES RECORDS</b></h2>
+                                <table class="center">
+                                    <tr style="text-align: center;">
+                                        <th>Event</th>
+                                        <th>Name</th>
+                                        <th>Time</th>
+                                    </tr>
+                                    <tr>
+                                        <td><b>3x3</b></td>
+                                        <td><b>Akshaansh Chilakapati</b></td>
+                                        <td><b>7.55</b></td>
+                                    </tr>
+                                    <tr>
+                                       <td><b>2x2</b></td>
+                                       <td><b>Rithwik Patnaik</b></td>
+                                       <td><b>1.25</b></td> 
+                                    </tr>
+                                    <tr>
+                                        <td><b>4x4</b></td>
+                                        <td><b>Akshaansh Chilakapati</b></td>
+                                        <td><b>27.97</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>5x5</b></td>
+                                        <td><b>Madhav Singh</b></td>
+                                        <td><b>1:05.33</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>6x6</b></td>
+                                        <td><b>Akshaansh Chilakapati</b></td>
+                                        <td><b>2:01.81</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>7x7</b></td>
+                                        <td><b>Akshaansh Chilakapati</b></td>
+                                        <td><b>3:20.54</b></td>
+                                    </tr>
+                                    <tr>
+                                       <td><b>3x3 One Handed</b></td> 
+                                       <td><b>Harsh Arvind Shelwatkar</b></td>
+                                       <td><b>11.29</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Pyraminx</b></td>
+                                        <td><b>Sai Ashish Vure</b></td>
+                                        <td><b>2.24</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Skewb</b></td>
+                                        <td><b>Madhav Singh</b></td>
+                                        <td><b>1.74</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Megaminx</b></td>
+                                        <td><b>Akshaansh Chilakapati</b></td>
+                                        <td><b>58.79</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Square-1</b></td>
+                                        <td><b>Rithwik Patnaik</b></td>
+                                        <td><b>10.70</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Clock</b></td>
+                                        <td><b>Gaurav Bachani</b></td>
+                                        <td><b>10.13</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>3x3 Blindfolded</b></td>
+                                        <td><b>Dattatreya Chodavarapu</b></td>
+                                        <td><b>1:21.85</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>4x4 Blindfolded</b></td>
+                                        <td><b>Akula Pavan Kumar</b></td>
+                                        <td><b>23:12.00</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>5x5 Blindfolded</b></td>
+                                        <td><b>COMING SOON!!</b></td>
+                                        <td><b>-</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Multiple Blindfolded</b></td>
+                                        <td><b>Dattatreya Chodavarapu</b></td>
+                                        <td><b>5/6(38:09)</b></td>
+                                        <tr>
+                                            <td><b>FMC</b></td>
+                                            <td><b>Akshaansh Chilakapati<br>Abhishek Sathyanarayanan
+                                            <br>Akula Pavan Kumar</b></td>
+                                            <td><b>35.00</b></td>
+                                        </tr>
+                                </table>
+                            </div>
+                            <div class="col-sm-6">
+                                <h2><b>AVERAGE RECORDS</b></h2>
+                                <table class="center">
+                                    <tr style="text-align: center;">
+                                        <th>Event</th>
+                                        <th>Name</th>
+                                        <th>Time</th>
+                                    </tr>
+                                    <tr>
+                                        <td><b>3x3</b></td>
+                                        <td><b>Harsh Arvind Shelwatkar</b></td>
+                                        <td><b>9.74</b></td>
+                                    </tr>
+                                    <tr>
+                                       <td><b>2x2</b></td>
+                                       <td><b>Akshaansh Chilakapati</b></td>
+                                       <td><b>2.79</b></td> 
+                                    </tr>
+                                    <tr>
+                                        <td><b>4x4</b></td>
+                                        <td><b>Abhishek Sathyanarayanan</b></td>
+                                        <td><b>35.21</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>5x5</b></td>
+                                        <td><b>Akshaansh Chilakapati</b></td>
+                                        <td><b>1:09.44</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>6x6</b></td>
+                                        <td><b>Akshaansh Chilakapati</b></td>
+                                        <td><b>2:13.42</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>7x7</b></td>
+                                        <td><b>Akshaansh Chilakapati</b></td>
+                                        <td><b>3:28.78</b></td>
+                                    </tr>
+                                    <tr>
+                                       <td><b>3x3 One Handed</b></td> 
+                                       <td><b>Harsh Arvind Shelwatkar</b></td>
+                                       <td><b>14.39</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Pyraminx</b></td>
+                                        <td><b>Akhil Kota</b></td>
+                                        <td><b>3.15</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Skewb</b></td>
+                                        <td><b>Madhav Singh</b></td>
+                                        <td><b>3.20</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Megaminx</b></td>
+                                        <td><b>Akshaansh Chilakapati</b></td>
+                                        <td><b>1:05.26</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Square-1</b></td>
+                                        <td><b>Rithwik Patnaik</b></td>
+                                        <td><b>14.82</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Clock</b></td>
+                                        <td><b>Gaurav Bachani</b></td>
+                                        <td><b>13.53</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>3x3 Blindfolded</b></td>
+                                        <td><b>Akula Pavan Kumar</b></td>
+                                        <td><b>2:09.61</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>4x4 Blindfolded</b></td>
+                                        <td><b>COMING SOON</b></td>
+                                        <td><b>-</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>5x5 Blindfolded</b></td>
+                                        <td><b>COMING SOON</b></td>
+                                        <td><b>-</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Multiple Blindfolded</b></td>
+                                        <td><b>N/A</b></td>
+                                        <td><b>N/A</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>FMC</b></td>
+                                        <td><b>Abhishek Sathyanarayanan</b></td>
+                                        <td><b>36.67</b></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="GALLERY">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="column">
+                                <img src="https://scontent.fhyd2-1.fna.fbcdn.net/v/t1.0-9/64323540_130882861494820_6305738342512197632_n.jpg?_nc_cat=110&_nc_sid=174925&_nc_ohc=KrV_o7dxeQ8AX8LTKp2&_nc_ht=scontent.fhyd2-1.fna&oh=edcaba2cde3cb56a8779391ba166a65d&oe=5F96B9E3" alt="Akshaansh Chilakapati" style="max-width:100%; height: 20vh;" onclick="myFunction(this);">
+                            </div>
+                            <div class="column">
+                                <img src="https://scontent.fhyd2-1.fna.fbcdn.net/v/t1.0-9/71796121_2412846845459841_769756640223166464_o.jpg?_nc_cat=100&_nc_sid=cdbe9c&_nc_ohc=RibE5Ogl_K4AX_TWxcm&_nc_ht=scontent.fhyd2-1.fna&oh=c699dabc7a709aece85a3e975e43e070&oe=5F953CA7" alt="Akula Pavan Kumar" style="max-width:100%; height: 20vh;" onclick="myFunction(this);">
+                            </div>
+                            <div class="column">
+                                <img src="https://www.worldcubeassociation.org/uploads/user/avatar/2016SHEL02/1570572405.jpg" alt="Harsh Arvind Shelwatkar" style="max-width:100%;height: 20vh;" onclick="myFunction(this);">
+                            </div>
+                            <div class="column">
+                                <img src="https://scontent.fhyd2-1.fna.fbcdn.net/v/t1.0-9/71243195_2412833408794518_989211305632071680_o.jpg?_nc_cat=111&_nc_sid=cdbe9c&_nc_ohc=Qg9HwhSSt1cAX9FBeWw&_nc_ht=scontent.fhyd2-1.fna&oh=faf615fecacda138d7eabbf83fd517c7&oe=5F974618" alt="Madhav Singh" style="max-width:100%;height: 20vh;;" onclick="myFunction(this);">
+                            </div>   
+                        </div>
+                        <div class="row">
+                            <div class="column">
+                                <img src="https://www.worldcubeassociation.org/uploads/user/avatar/2012SATH01/1548420509.JPG" alt="Abhishek Sathyanarayanan" style="max-width:100%; height: 20vh;" onclick="myFunction(this);">
+                            </div>
+                            <div class="column">
+                                <img src="https://scontent.fhyd2-1.fna.fbcdn.net/v/t1.0-9/79242842_2622961777800662_1864197633904476160_o.jpg?_nc_cat=103&_nc_sid=09cbfe&_nc_ohc=vKn6coRi6l4AX-DzBtB&_nc_ht=scontent.fhyd2-1.fna&oh=b07321a366f3f4c7b5af1115ea09315e&oe=5F96CB02" alt="Dattatreya Chodavarapu" style="max-width:100%; height: 20vh;" onclick="myFunction(this);">
+                            </div>
+                            <div class="column">
+                                <img src="https://scontent.fhyd2-1.fna.fbcdn.net/v/t1.0-9/71005524_2412850662126126_7893452889870303232_o.jpg?_nc_cat=103&_nc_sid=cdbe9c&_nc_ohc=Jwf8CM7T5V0AX8BS0EW&_nc_ht=scontent.fhyd2-1.fna&oh=b61733d031e0a6d9c769fa9d3b77005c&oe=5F9832E7" alt="Gaurav Bachani" style="max-width:100%;height: 20vh;" onclick="myFunction(this);">
+                            </div>
+                            <div class="column">
+                                <img src="https://scontent.fhyd2-1.fna.fbcdn.net/v/t1.0-9/71585747_2412861382125054_845018623461294080_o.jpg?_nc_cat=101&_nc_sid=cdbe9c&_nc_ohc=akNADTvhXDsAX-_Kmqp&_nc_ht=scontent.fhyd2-1.fna&oh=e32c9a5cbdee7e473593f0acdd818ab6&oe=5F97D300" alt="Ritwik Patnaik" style="max-width:100%;height: 20vh;;" onclick="myFunction(this);">
+                            </div>   
+                        </div>
+                        <div class="row">
+                            <div class="column">
+                                <img src="https://www.worldcubeassociation.org/uploads/user/avatar/2014VURE01/1539064450.jpg" alt="Sai Ashish Vure" style="max-width:100%; height: 20vh;" onclick="myFunction(this);">
+                            </div>
+                            <div class="column">
+                                <img src="https://www.worldcubeassociation.org/uploads/user/avatar/2016SRIP01/1540992919.jpg" alt="Krishna Advait Sripada" style="max-width:100%; height: 20vh;" onclick="myFunction(this);">
+                            </div>
+                            <div class="column">
+                                <img src="https://scontent.fhyd2-1.fna.fbcdn.net/v/t1.0-9/71134143_2412826722128520_7074201355765678080_o.jpg?_nc_cat=111&_nc_sid=cdbe9c&_nc_ohc=_M0XI2jxJJEAX_S3yDn&_nc_ht=scontent.fhyd2-1.fna&oh=be67ee0d8fd79409d75f0a220fddd693&oe=5F96E0EB" alt="Tejas Parse" style="max-width:100%;height: 20vh;" onclick="myFunction(this);">
+                            </div>
+                            <div class="column">
+                                <img src="https://www.worldcubeassociation.org/uploads/user/avatar/2018JAIN01/1569981442.jpg" alt="Tegan Jain" style="max-width:100%;height: 20vh;" onclick="myFunction(this);">
+                            </div>   
+                        </div>
+                        <div class="container">
+                            <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+                            <img id="expandedImg" style="width:50%">
+                            <div id="imgtext"></div>
+                        </div>  
+                        <p><br>More pics COMING SOON.....</p>                        
+                    </div>
+                </div>
                 <div class="tab-pane fade" id="JOINUS">
                     <div class="container-fluid">
-                        <h1>JOIN OUR TEAM!</h1>
+                        <h1 class="headp">JOIN OUR TEAM!</h1>
                         <p> If anyone is interested in joining our team and wants to help us in organizing competitions and contributing to the speedcubing community, Please fill this form!</p>
                         <div class="row">
                             <div class="col-sm-6">
@@ -415,7 +874,7 @@ crossorigin="anonymous"></script>
                                         <option value="No">No</option>
                                     </select><br></div>
                                 
-                                <label for="number">Phone Number</label>
+                                <label for="number">Phone Number:</label><br>
                                 <input type="number" id="number"><br>
                                 </form>
                             </div>
@@ -434,8 +893,8 @@ crossorigin="anonymous"></script>
             </div>
         </div>
     </body>
-    <footer>
-        <p class="contextf"><b>©Copyright 2020 DECCAN CUBING. All rights reserved</b></p><br>
+    <footer class="foot">
+        <p class="contextf"><b><span class="glyphicon glyphicon-copyright-mark"></span> Copyright 2020 DECCAN CUBING. All rights reserved</b></p><br>
         <a class="insta" href="https://www.instagram.com/deccancubing/?hl=en " target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/599px-Instagram_icon.png" style="width: 35px; height: 35px;"></a>
         <a class="fb" href="https://www.facebook.com/DeccanCubing " target="_blank"><img src="https://i.pinimg.com/736x/ac/57/3b/ac573b439cde3dec8ca1c6739ae7f628.jpg" style="height: 35px; width: 35px;"></a>
     </footer>
